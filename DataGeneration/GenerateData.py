@@ -105,8 +105,10 @@ while vacationIndex < 50000:
   startDate = datetime.datetime(randomYear, randomMonth, randomDay)
   endDate = startDate + datetime.timedelta(days=randomDuration)
   
-  vacationStart.append(('"', startDate.date(), '"'))
-  vacationEnd.append(('"', endDate.date(), '"'))
+  startDateString = '"' + str(startDate.date()) + '"'
+  endDateString = '"' + str(endDate.date()) + '"'
+  vacationStart.append(startDateString)
+  vacationEnd.append(endDateString)
 
   #Choose user
   vacationUser.append(random.randint(0, len(userlist) - 1))
@@ -130,14 +132,81 @@ while vacationIndex < 50000:
   vacationIndex += 1
 print("Done creating data")
 
+print("Creating files!")
 #Spara allt i filer
-with open("VacationActivities.txt", "w", encoding="utf-8") as f:
+#Countries.csv
+with open("Countries.csv", "w", encoding="utf-8") as f:
   index = 0
-  while index < len(takenActivity):
-    f.write(userlist[vacationUser[takenActivityVacation[index]]]) #User Name
-    f.write(",") 
-    f.write(activitylist[takenActivity[index]]) #Activity Name
+  for country in countrylist:
+    f.write(str(index)) #Primary key index
     f.write(",")
-    f.write(str(takenActivityRating[index])) #Rating
+    f.write(country) #Name attribute
     f.write('\n') #New line
     index += 1
+
+#Cities.csv
+with open("Cities.csv", "w", encoding="utf-8") as f:
+  index = 0
+  for city in citylist:
+    f.write(str(index)) #Primary key index
+    f.write(",")
+    f.write(city) #Name attribute
+    f.write(",")
+    f.write(str(cityCountry[index])) #Foreign key to country
+    f.write('\n') #New line
+    index += 1
+
+#Activities.csv
+with open("Activities.csv", "w", encoding="utf-8") as f:
+  index = 0
+  for activity in activitylist:
+    f.write(str(index)) #Primary key index
+    f.write(",")
+    f.write(activity) #Name attribute
+    f.write(",")
+    f.write(activityType[index]) #Type attribute
+    f.write(",")
+    f.write(str(activityCity[index])) #Foreign key to city
+    f.write('\n') #New line
+    index += 1
+
+#Users.csv
+with open("Users.csv", "w", encoding="utf-8") as f:
+  index = 0
+  for user in userlist:
+    f.write(str(index)) #Primary key index
+    f.write(",")
+    f.write(user) #Name attribute
+    f.write(",")
+    f.write(str(userCountry[index])) #Foreign key to country
+    f.write('\n') #New line
+    index += 1
+
+#Vacations.csv
+with open("Vacations.csv", "w", encoding="utf-8") as f:
+  index = 0
+  while index < len(vacationUser):
+    f.write(str(index)) #Primary key index
+    f.write(",")
+    f.write(vacationStart[index]) #Start date attribute
+    f.write(",")
+    f.write(vacationEnd[index]) #End date attribute
+    f.write(",")
+    f.write(str(vacationUser[index])) #Foreign key to user
+    f.write('\n') #New line
+    index += 1
+
+#Ratings.csv
+with open("Ratings.csv", "w", encoding="utf-8") as f:
+  index = 0
+  for rating in takenActivityRating:
+    f.write(str(takenActivity[index])) #Foreign key to activity
+    f.write(",")
+    f.write(str(takenActivityVacation[index])) #Foreign key to vacation
+    f.write(",")
+    f.write(str(rating)) #Rating attribute
+    f.write('\n') #New line
+    index += 1
+
+print("Files created!")
+print("All done c:")
