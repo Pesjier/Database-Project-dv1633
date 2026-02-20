@@ -12,7 +12,7 @@ cityCountry = []
 activitylist = []
 activityCity = []
 activityType = []
-
+#laura
 #Users
 userlist = []
 userCountry = []
