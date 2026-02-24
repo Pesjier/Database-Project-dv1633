@@ -1,9 +1,17 @@
-DROP TABLE Countries;
-DROP TABLE Cities;
+SET SQL_SAFE_UPDATES = 0;
+DELETE FROM Ratings;
+DELETE FROM Activities;
+DELETE FROM Vacations;
+DELETE FROM Users;
+DELETE FROM Cities;
+DELETE FROM Countries;
+
+DROP TABLE Rating;
 DROP TABLE Activities;
-DROP TABLE Users;
 DROP TABLE Vacations;
-DROP TABLE Ratings;
+DROP TABLE Users;
+DROP TABLE Cities;
+DROP TABLE Countries;
 
 CREATE TABLE Countries
 (
