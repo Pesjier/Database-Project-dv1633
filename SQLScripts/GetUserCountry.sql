@@ -1,0 +1,11 @@
+DROP FUNCTION IF EXISTS get_user_country
+
+DELIMITER %%
+CREATE FUNCTION get_user_country(uID INT) RETURNS INT DETERMINISTIC
+BEGIN
+	DECLARE cID INT;
+    SET cID = (SELECT countryID
+    FROM users
+    WHERE users.userID = uID);
+    RETURN cID;
+END %%

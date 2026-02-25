@@ -1,0 +1,11 @@
+DROP FUNCTION IF EXISTS get_user_name
+
+DELIMITER %%
+CREATE FUNCTION get_user_name(uID INT) RETURNS VARCHAR(255) DETERMINISTIC
+BEGIN
+	DECLARE uName VARCHAR(255);
+    SET uName = (SELECT userName
+    FROM users
+    WHERE users.userID = uID);
+    RETURN uName;
+END %%

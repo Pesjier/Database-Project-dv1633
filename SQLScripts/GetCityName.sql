@@ -1,6 +1,12 @@
-DROP PROCEDURE IF EXISTS get_city_name;
+DROP FUNCTION IF EXISTS get_city_name;
 
-CREATE PROCEDURE get_city_name(city INTEGER)
-	SELECT cityName
+DELIMITER %%
+CREATE FUNCTION get_city_name(city INTEGER) RETURNS VARCHAR(255) DETERMINISTIC
+BEGIN
+	DECLARE cName VARCHAR(255);
+    SET cName = 
+	(SELECT cityName
     FROM cities
-    WHERE cities.cityID = city;
+    WHERE cities.cityID = city);
+    RETURN cName;
+END; %%

@@ -1,6 +1,6 @@
 DROP PROCEDURE IF EXISTS get_country_top_activities;
 
-CREATE PROCEDURE get_country_top_activities(country INTEGER)
+CREATE PROCEDURE get_country_top_activities(country INT, minRatings INT, fromIndex INT, toIndex INT)
 	SELECT averageRating, activityName, amountOfRatings
 	FROM
 		(SELECT * 
@@ -8,9 +8,10 @@ CREATE PROCEDURE get_country_top_activities(country INTEGER)
 			FROM ratings
 			JOIN activities ON ratings.activityID = activities.activityID
 			GROUP BY activities.activityID) as tablename
-		WHERE amountOfRatings > 5) as anotherTableName
+		WHERE amountOfRatings > minRatings) as anotherTableName
 	JOIN (SELECT cityID
 		FROM cities
 		JOIN countries ON countries.countryID = cities.countryID
 		where countries.countryID = country) AS countryCities ON countryCities.cityID = anotherTableName.cityID
-	ORDER BY averageRating DESC;
+	ORDER BY averageRating DESC
+    LIMIT fromIndex, toIndex;
