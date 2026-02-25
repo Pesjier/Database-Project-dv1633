@@ -66,4 +66,7 @@ CREATE TABLE Ratings
     CONSTRAINT ratingID PRIMARY KEY(activityID, vacationID),
     FOREIGN KEY(acitivityID) REFERENCES Activities(activityID),
     FOREIGN KEY(vacationID) REFERENCES Vacations(vacationID)
+    CONSTRAINT ratingID PRIMARY KEY(activityID, vacationID),
+    FOREIGN KEY(activityID) REFERENCES Activities(activityID),
+    FOREIGN KEY(vacationID) REFERENCES Vacations(vacationID)
 );
