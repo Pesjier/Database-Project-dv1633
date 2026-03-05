@@ -7,8 +7,8 @@ def addact_id(act_id, functionname):
     mydb = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="Pwnnoob21!",
-    database = "dv1633"
+    password="laura123",
+    database = "mysqlproject"
     )
 
     mycursor = mydb.cursor()
@@ -31,7 +31,8 @@ def choose():
     act_id = (request.form["act_id"])
     choices = (request.form["choices"])
     print("choices:", choices)
-    print("ACT ID:", act_id)
+    print("ACT ID:", act_id
+          )
     if choices == "1":
         results = addact_id(act_id, "get_activitytype")
         name = "get_activitytype"

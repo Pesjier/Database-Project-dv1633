@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+    .container {
+        display: flex;
+    }
+
+    .section {
+        flex: 1;
+        padding: 20px;
+        border: 1px solid #ccc;
+    }
+    </style>
+    <h1>{{name}}</h1>
+    <div class="container">
+        <div class="section">
+            <p>Top cities (With enough ratings)</p>
+            {% for columns in city_ratings %}
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <span>{{ columns[1] }}, {{ columns[0] }}/5 ☆</span>
+
+                    <form action="/../city/" method="POST">
+                        <input type="hidden" name="c_id" value="{{ columns[2] }}">
+                        <button type="submit">Select</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="section">
+            <p>Different Activities</p>
+            {% for columns in type_ratings %}
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <span>{{ columns[1] }}s, {{ columns[0] }}/5 ☆</span>
+
+                    <form action="/../activitytype/" method="POST">
+                        <input type="hidden" name="c_id" value="{{ columns[1] }}">
+                        <button type="submit">Select</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="section">
+            <p>Top Activities (With enough ratings)</p>
+            {% for columns in activity_ratings %}
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <span>{{ columns[1] }}s, {{ columns[0] }}/5 ☆</span>
+
+                    <form action="/../activities/" method="POST">
+                        <input type="hidden" name="c_id" value="{{ columns[3] }}">
+                        <button type="submit">Select</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
