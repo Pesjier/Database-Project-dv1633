@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+table {
+  border-collapse: collapse;
+  width: 50%;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px 16px;
+}
+
+tr:nth-child(even){
+  background-color: rgb(150,118,77);
+}
+</style>
+
+<table id="myTable">
+    <thead>
+        <tr>
+            <th>Country ID</th>
+            <th>Country Name</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    {% for columns in results %}
+        <tr>
+            <td>{{ columns[0] }}</td>
+            <td>{{ columns[1] }}</td>
+
+            <td>
+                <form action="/countries/" method="POST">
+                    <input type="hidden" name="c_id" value="{{ columns[0] }}">
+                    <button type="submit">Select</button>
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>
