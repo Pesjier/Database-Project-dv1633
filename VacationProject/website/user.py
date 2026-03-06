@@ -30,10 +30,6 @@ def procedure_qeury(id, query):
 user = Blueprint("user", __name__)
 
 @user.route("/", methods = ["GET", "POST"])
-def choose():
-    return render_template("user_button.html")
-
-@user.route("/homepage", methods = ["GET", "POST"])
 def homepage():
     user_id = (request.form["user_id"])
     print("user_id", user_id)

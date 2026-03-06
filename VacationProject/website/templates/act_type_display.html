@@ -15,99 +15,45 @@ tr:nth-child(even){
     background-color: rgb(150, 118, 77);
 }
 </style>
-<body>
-<p>Details for activity, country, city<p>
-<p>activity:{{name_act}}<p>
-<p>country:{{country}}<p>
-<p>city:{{city}}<p>
-<br><br>
-<p> Table for activity_type, activity_id<p>
 
-<table>
-    <tr>
-      <th>activity_type</th>
-      <th>activity_id</th>
-    </tr>
-    {% for columns  in results1 %}
-    <tr>
-      {% for rows in columns %}
-      
-        <td> {{rows}}</td>
-      
+
+<body>
+  <style>
+    .container {
+        display: flex;
+    }
+
+    .section {
+        flex: 1;
+        padding: 20px;
+        border: 1px solid #ccc;
+    }
+    </style>
+<div class="container">
+    <div class="section">
+      <p>Details for activity, country, city<p>
+      <p>activity:{{name_act}}<p>
+      <p>country:{{country}}<p>
+      <p>city:{{city}}<p>
+      <p> type: {{results1}}
+      <p> average_rate: {{results4}}
+    </div>
+
+    <div class="section">
+
+        {% for columns in result6 %}
+            <div style="display:flex; align-items:center; gap:10px;">
+                <span>{{ columns[0] }}, {{ columns[1] }}, {{ columns[2] }}</span>
+
+                <form action="/../user/" method="POST">
+                    <input type="hidden" name="user_id" value="{{ columns[2] }}">
+                    <button type="submit">Select</button>
+                </form>
+            </div>
         {% endfor %}
-    </tr>
-    {% endfor %}
-</table>
-<br><br>
-<p>Table for avg_rate, activity_type, city_id, cityname<p>
-<table>
-    <tr>
-      <th>avg_rate</th>
-      <th>activity_type</th>
-      <th>city_id</th>
-      <th>cityname</th>
-    </tr>
-    {% for columns  in results2 %}
-    <tr>
-      {% for rows in columns %}
-      
-        <td> {{rows}}</td>
-      
-        {% endfor %}
-    </tr>
-    {% endfor %}
-</table>
-<p>Table for avg_rate, activity_type, country_id, countryname<p>
-<table>
-    <tr>
-      <th>avg_rate</th>
-      <th>activity_type</th>
-      <th>country_id</th>
-      <th>countryname</th>
-    </tr>
-    {% for columns  in results3 %}
-    <tr>
-      {% for rows in columns %}
-      
-        <td> {{rows}}</td>
-      
-        {% endfor %}
-    </tr>
-    {% endfor %}
-</table>
-<br><br>
-<p>Table for avg_rate, count<p>
-<table>
-    <tr>
-      <th>avg_rate</th>
-      <th>count</th>
-    </tr>
-    {% for columns  in results4 %}
-    <tr>
-      {% for rows in columns %}
-      
-        <td> {{rows}}</td>
-      
-        {% endfor %}
-    </tr>
-    {% endfor %}
-</table>
-<br><br>
-<p> Table for user and their rate<p>
-<table>
-    <tr>
-      <th>username</th>
-      <th>rate</th>
-    </tr>
-    {% for columns  in result6 %}
-    <tr>
-      {% for rows in columns %}
-      
-        <td> {{rows}}</td>
-      
-        {% endfor %}
-    </tr>
-    {% endfor %}
-</table>
+    </div>
+</div>
+
+
 </body>
 </html>

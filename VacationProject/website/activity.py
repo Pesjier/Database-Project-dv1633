@@ -15,24 +15,20 @@ def addact_id(act_id, functionname):
 
     return to_return
 
-#startup for ../activities
-@activities.route("/", methods = ["GET"])
-def selectpage():
-    return render_template("actid_button.html")
-
 # user select what to see(procedure) and the act_id  
-@activities.route("/choose", methods = ["POST"])
+@activities.route("/", methods = ["POST"])
 def choose():
-    act_id = (request.form["act_id"])
+    act_id = request.form["act_id"]
     print("ACT ID:", act_id)
     results1 = addact_id(act_id, "get_activitytype")
-    results2 = addact_id(act_id, "get_city_avg_ratae_count_users")
-    results3 = addact_id(act_id, "get_country_avg_ratae_count_users")
+    print(results1)
     results4 = addact_id(act_id, "getavg_rate_count")
+    print(results4)
     results5 = addact_id(act_id, "getactivityname")
+    print(results5)
     vac_id = act_id
     result6 = addact_id(vac_id, "get_username_rate")
     print(result6[0])
 
-    return render_template("act_type_display.html", results1 = results1, results2 = results2, results3 = results3, results4 = results4, name_act = results5[0][0], 
+    return render_template("act_type_display.html", results1 = results1[0][0], results4 = results4[0][0], name_act = results5[0][0], 
     country = results5[0][1], city = results5[0][2], result6 = result6)

@@ -5,34 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Multiple select</title>
 </head>
-<style>
-table, th, td {
+  <style>
+    .container {
+        display: flex;
+    }
 
-  padding-right: 2em;
-}
-tr:nth-child(even){
-    background-color: rgb(150, 118, 77);
-}
-</style>
+    .section {
+        flex: 1;
+        padding: 20px;
+        border: 1px solid #ccc;
+    }
+    </style>
 <body>
-<p> Start : {{start}} and End: {{end}} with user_id: {{id}}<p>
-</form>
-<table>
-    <tr>
-      <th>rate</th>
-      <th>id</th>
-      <th>name</th>
 
-    </tr>
-    {% for columns  in results %}
-    <tr>
-      {% for rows in columns %}
-      
-        <td> {{rows}}</td>
-      
+<div class="container">
+    <div class="section">
+      <p> Start : {{start}} and End: {{end}} with user_id: {{id}}<p></p>
+    </div>
+
+    <div class="section">
+
+        {% for columns in results %}
+            <div style="display:flex; align-items:center; gap:10px;">
+                <span>{{ columns[0] }}, {{ columns[1] }}, {{columns[2]}} </span>
+            </div>
         {% endfor %}
-    </tr>
-    {% endfor %}
-</table>
+    </div>
+</div>
+
 </body>
 </html>
