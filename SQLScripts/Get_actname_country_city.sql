@@ -1,4 +1,3 @@
-DROP procedure IF EXISTS getactivityname;
 DELIMITER $$
 CREATE procedure getactivityname(IN id int) 
 BEGIN

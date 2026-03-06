@@ -1,4 +1,3 @@
-DROP procedure IF EXISTS getavg_rate_count;
 DELIMITER $$
 CREATE procedure getavg_rate_count(IN act_id int) 
 BEGIN

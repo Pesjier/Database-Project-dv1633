@@ -1,5 +1,3 @@
-DROP PROCEDURE IF EXISTS get_type_top_countries;
-
 CREATE PROCEDURE get_type_top_countries(act_type varchar(255))
 	SELECT countries.countryName, countries.countryID, AVG(rating) as avgRating
     FROM countries

@@ -1,5 +1,3 @@
-DROP PROCEDURE IF EXISTS get_country_top_cities;
-
 CREATE PROCEDURE get_country_top_cities(country INT, minRatings INT, fromIndex INT, toIndex INT)
 	SELECT *
     FROM

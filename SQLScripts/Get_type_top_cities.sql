@@ -1,5 +1,3 @@
-DROP PROCEDURE IF EXISTS get_type_top_cities;
-
 CREATE PROCEDURE get_type_top_cities(act_type varchar(255))
 	SELECT AVG(rating) as avgRating, cities.cityName, cities.cityID
     FROM cities

@@ -1,5 +1,3 @@
-DROP PROCEDURE IF EXISTS get_country_top_activities;
-
 CREATE PROCEDURE get_country_top_activities(country INT, minRatings INT, fromIndex INT, toIndex INT)
 	SELECT averageRating, activityName, amountOfRatings, activityID
 	FROM

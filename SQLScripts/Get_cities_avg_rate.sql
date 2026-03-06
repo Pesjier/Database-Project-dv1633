@@ -1,4 +1,3 @@
-DROP procedure IF EXISTS get_cities_avg_rate;
 DELIMITER $$
 CREATE procedure get_cities_avg_rate(IN act_id int) 
 BEGIN
