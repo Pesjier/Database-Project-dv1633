@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+table, th, td {
+
+  padding-right: 2em;
+}
+tr:nth-child(even){
+    background-color: rgb(172, 157, 137);
+}
+</style>
+<body >
+<p style="background-color:rgb(172, 157, 137);">{{name}} from {{countryname}} has rated<p>
+<table>
+    <tr>
+      <th>avg_rate</th>
+      <th>vacation_id</th>
+      <th>startdate</th>
+      <th>enddate</th>
+    </tr>
+    {% for columns  in results2 %}
+    <tr>
+      {% for rows in columns %}
+      
+        <td> {{rows}}</td>
+      
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

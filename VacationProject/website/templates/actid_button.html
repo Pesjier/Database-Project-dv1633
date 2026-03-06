@@ -9,15 +9,6 @@
     <h3>Select Your function:</h3>
 
 <form method="POST" action="{{url_for('activities.choose')}}">
-
-  <label>Choose procedure by entering a number:</label>
-  <select name="choices" required>
-    <option value="1">1=get_activitytype</option>
-    <option value="2">2=get_cities_avg_rate</option>
-    <option value="3">3=get_countries_avg_rate</option>
-    <option value="4">4=getactivityname</option>
-    <option value="5">5=getavg_rate_count</option>
-  </select>
   activity_id:<input type="number"name="act_id" required>
   <br><br>
   <button type="submit">Submit</button>

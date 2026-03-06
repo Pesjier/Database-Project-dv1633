@@ -6,8 +6,7 @@ def create_app():
     app.config['SECRET_KEY'] = 'whatever'
 
     from .country import country
-    from .activities import activities
-    from .activitytype import activitytype
+    from .activity import activities
     from .city import city
     from .user import user
     from .vacation import vacation
@@ -16,7 +15,6 @@ def create_app():
 
     # hämtas enligt /blabla (vi kan lägga till)#
     app.register_blueprint(activities, url_prefix = "/activities")
-    app.register_blueprint(activitytype, url_prefix = "/activitytype")
     app.register_blueprint(city, url_prefix = "/city")
     app.register_blueprint(user, url_prefix = "/user")
     app.register_blueprint(vacation, url_prefix = "/vacation")
