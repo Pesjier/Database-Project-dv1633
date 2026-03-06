@@ -43,7 +43,7 @@ tr:nth-child(even){
 
         {% for columns in result6 %}
             <div style="display:flex; align-items:center; gap:10px;">
-                <span>{{ columns[0] }}, {{ columns[1] }}, {{ columns[2] }}</span>
+                <span>{{ columns[0] }}, {{ columns[1] }}</span>
 
                 <form action="/../user/" method="POST">
                     <input type="hidden" name="user_id" value="{{ columns[2] }}">

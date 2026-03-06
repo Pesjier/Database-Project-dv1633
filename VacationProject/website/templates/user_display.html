@@ -23,7 +23,7 @@
         <div class="section">
             {% for columns in results2 %}
                 <div style="display:flex; align-items:center; gap:10px;">
-                    <span>{{ columns[0] }}, {{ columns[1] }}, {{columns[2]}}, {{columns[3]}}</span>
+                    <span>{{ columns[0] }}, {{columns[2]}}, {{columns[3]}}</span>
 
                     <form action="/../vacation/" method="POST">
                         <input type="hidden" name="vac_id" value="{{ columns[1] }}">

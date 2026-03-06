@@ -36,4 +36,5 @@ def homepage():
     mycursor.close()
     mydb.close()
 
+
     return render_template("vacation_display.html", start = start_vacation[0][0], end = end_vacation[0][0], results = rate_act_name_id)

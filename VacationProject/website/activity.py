@@ -26,8 +26,8 @@ def choose():
     print(results4)
     results5 = addact_id(act_id, "getactivityname")
     print(results5)
-    vac_id = act_id
-    result6 = addact_id(vac_id, "get_username_rate")
+
+    result6 = addact_id(act_id, "get_username_rate_id")
     print(result6[0])
 
     return render_template("act_type_display.html", results1 = results1[0][0], results4 = results4[0][0], name_act = results5[0][0], 
