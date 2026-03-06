@@ -1,4 +1,3 @@
-DROP PROCEDURE get_country_avg_ratae_count_users;
 delimiter $$
 create procedure get_country_avg_ratae_count_users(IN aID INT)
 begin
@@ -11,6 +10,4 @@ Select countryName, avg(ratings.rating) as averagerating, count(ratings.vacation
 	group by countries.countryID, countries.countryName
 	order by averagerating desc;
 end $$
-
-delimiter ;
 

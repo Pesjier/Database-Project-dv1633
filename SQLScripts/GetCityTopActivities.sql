@@ -2,7 +2,7 @@ CREATE PROCEDURE get_city_top_activities(city INTEGER, minRatings INT, fromIndex
 	SELECT averageRating, activityName, amountOfRatings
 	FROM
 		(SELECT * 
-		FROM (SELECT AVG(ratings.rating) as averageRating, activities.activityName, activities.cityID, COUNT(ratings.rating) as amountOfRatings
+		FROM (SELECT AVG(ratings.rating) as averageRating, activities.activityName, activities.activityID, activities.cityID, COUNT(ratings.rating) as amountOfRatings
 			FROM ratings
 			JOIN activities ON ratings.activityID = activities.activityID
 			GROUP BY activities.activityID) as tablename

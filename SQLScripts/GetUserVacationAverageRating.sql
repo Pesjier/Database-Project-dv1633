@@ -6,4 +6,3 @@ CREATE PROCEDURE get_user_vacation_average_rating(uID INT)
     JOIN users on vacations.userID = users.userID
     GROUP BY vacationID) as tableName
     WHERE tableName.userID = uID;
-    
