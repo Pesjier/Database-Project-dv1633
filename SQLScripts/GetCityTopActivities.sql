@@ -1,5 +1,3 @@
-DROP PROCEDURE IF EXISTS get_city_top_activities;
-
 CREATE PROCEDURE get_city_top_activities(city INTEGER, minRatings INT, fromIndex INT, toIndex INT)
 	SELECT averageRating, activityName, amountOfRatings
 	FROM

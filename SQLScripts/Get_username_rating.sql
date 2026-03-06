@@ -1,4 +1,3 @@
-DROP procedure IF EXISTS get_username_rate;
 DELIMITER $$
 CREATE procedure get_username_rate(IN vac_id int) 
 BEGIN

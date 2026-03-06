@@ -1,5 +1,3 @@
-DROP PROCEDURE IF EXISTS get_vacation_ratings;
-
 CREATE PROCEDURE get_vacation_ratings(vacation INT)
 	SELECT rating, activities.activityID, activityName
     FROM activities

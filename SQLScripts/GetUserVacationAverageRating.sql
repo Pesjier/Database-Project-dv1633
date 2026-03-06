@@ -1,5 +1,3 @@
-DROP PROCEDURE IF EXISTS get_user_vacation_average_rating;
-
 CREATE PROCEDURE get_user_vacation_average_rating(uID INT)
 	SELECT *
 	FROM (SELECT AVG(ratings.rating) as averageRating, ratings.vacationID, startDate, endDate, users.userName, users.userID

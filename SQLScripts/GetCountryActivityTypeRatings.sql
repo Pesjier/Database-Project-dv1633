@@ -1,5 +1,3 @@
-DROP PROCEDURE IF EXISTS get_country_activity_type_ratings;
-
 CREATE PROCEDURE get_country_activity_type_ratings(country INT)
 	SELECT AVG(ratings.rating) AS averageRating, activityType
     FROM ratings

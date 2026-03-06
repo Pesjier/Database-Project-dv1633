@@ -1,5 +1,3 @@
-DROP FUNCTION IF EXISTS get_vacation_start
-
 DELIMITER %%
 CREATE FUNCTION get_vacation_start(vacation INT) RETURNS DATE DETERMINISTIC
 BEGIN
