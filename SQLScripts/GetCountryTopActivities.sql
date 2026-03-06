@@ -1,10 +1,10 @@
 DROP PROCEDURE IF EXISTS get_country_top_activities;
 
 CREATE PROCEDURE get_country_top_activities(country INT, minRatings INT, fromIndex INT, toIndex INT)
-	SELECT averageRating, activityName, amountOfRatings
+	SELECT averageRating, activityName, amountOfRatings, activityID
 	FROM
 		(SELECT * 
-		FROM (SELECT AVG(ratings.rating) as averageRating, activities.activityName, activities.cityID, COUNT(ratings.rating) as amountOfRatings
+		FROM (SELECT AVG(ratings.rating) as averageRating, activities.activityName, activities.cityID, activities.activityID, COUNT(ratings.rating) as amountOfRatings
 			FROM ratings
 			JOIN activities ON ratings.activityID = activities.activityID
 			GROUP BY activities.activityID) as tablename

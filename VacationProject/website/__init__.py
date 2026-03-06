@@ -10,10 +10,12 @@ def create_app():
     from .city import city
     from .user import user
     from .vacation import vacation
+    from .startscreen import startscreen
 
-    app.register_blueprint(country, url_prefix = "/")  #the startup page
+    app.register_blueprint(startscreen, url_prefix = "/") #the startup page
 
     # hämtas enligt /blabla (vi kan lägga till)#
+    app.register_blueprint(country, url_prefix = "/countries") 
     app.register_blueprint(activities, url_prefix = "/activities")
     app.register_blueprint(city, url_prefix = "/city")
     app.register_blueprint(user, url_prefix = "/user")
