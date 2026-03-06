@@ -18,13 +18,13 @@
         border: 1px solid #ccc;
     }
     </style>
-    <h1>{{name}}</h1>
+    <h1>{{name}}s</h1>
     <div class="container">
         <div class="section">
-            <p>Top cities (With enough ratings)</p>
+            <p>Top cities for {{name}}s</p>
             {% for columns in city_ratings %}
                 <div style="display:flex; align-items:center; gap:10px;">
-                    <span>{{ columns[1] }}, {{ columns[0] }}/5 ☆</span>
+                    <span>{{ columns[1] }}s, {{ columns[0] }}/5 ☆</span>
 
                     <form action="/../city/" method="POST">
                         <input type="hidden" name="c_id" value="{{ columns[2] }}">
@@ -35,27 +35,13 @@
         </div>
 
         <div class="section">
-            <p>Different Activities</p>
-            {% for columns in type_ratings %}
+            <p>Top countries for {{name}}s</p>
+            {% for columns in country_ratings %}
                 <div style="display:flex; align-items:center; gap:10px;">
-                    <span>{{ columns[1] }}s, {{ columns[0] }}/5 ☆</span>
+                    <span>{{ columns[0] }}, {{ columns[2] }}/5 ☆</span>
 
-                    <form action="/../activitytype/" method="POST">
-                        <input type="hidden" name="type" value="{{ columns[1] }}">
-                        <button type="submit">Select</button>
-                    </form>
-                </div>
-            {% endfor %}
-        </div>
-
-        <div class="section">
-            <p>Top Activities (With enough ratings)</p>
-            {% for columns in activity_ratings %}
-                <div style="display:flex; align-items:center; gap:10px;">
-                    <span>{{ columns[1] }}s, {{ columns[0] }}/5 ☆</span>
-
-                    <form action="/../activities/" method="POST">
-                        <input type="hidden" name="act_id" value="{{ columns[3] }}">
+                    <form action="/../countries/" method="POST">
+                        <input type="hidden" name="c_id" value="{{ columns[1] }}">
                         <button type="submit">Select</button>
                     </form>
                 </div>

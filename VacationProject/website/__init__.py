@@ -11,6 +11,7 @@ def create_app():
     from .user import user
     from .vacation import vacation
     from .startscreen import startscreen
+    from .activitytype import activitytype
 
     app.register_blueprint(startscreen, url_prefix = "/") #the startup page
 
@@ -20,6 +21,7 @@ def create_app():
     app.register_blueprint(city, url_prefix = "/city")
     app.register_blueprint(user, url_prefix = "/user")
     app.register_blueprint(vacation, url_prefix = "/vacation")
+    app.register_blueprint(activitytype, url_prefix = "/activitytype")
 
 
     return app
