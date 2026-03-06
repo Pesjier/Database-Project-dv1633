@@ -1,16 +1,11 @@
 from flask import Blueprint, request, render_template, redirect, url_for
-import mysql.connector
+from .database_connect import get_sql_database
+
 
 activities = Blueprint("activities", __name__)
 
 def addact_id(act_id, functionname):
-    mydb = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="laura123",
-    database = "mysqlproject"
-    )
-
+    mydb = get_sql_database()
     mycursor = mydb.cursor()
     mycursor.execute(f"call {functionname}(%s)", (act_id,))
     to_return = mycursor.fetchall()
@@ -31,8 +26,8 @@ def choose():
     act_id = (request.form["act_id"])
     print("ACT ID:", act_id)
     results1 = addact_id(act_id, "get_activitytype")
-    results2 = addact_id(act_id, "get_cities_avg_rate")
-    results3 = addact_id(act_id, "get_countries_avg_rate")
+    results2 = addact_id(act_id, "get_city_avg_ratae_count_users")
+    results3 = addact_id(act_id, "get_country_avg_ratae_count_users")
     results4 = addact_id(act_id, "getavg_rate_count")
     results5 = addact_id(act_id, "getactivityname")
     vac_id = act_id

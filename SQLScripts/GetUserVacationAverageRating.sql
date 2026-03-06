@@ -1,12 +1,11 @@
 DROP PROCEDURE IF EXISTS get_user_vacation_average_rating;
 
 CREATE PROCEDURE get_user_vacation_average_rating(uID INT)
-	SELECT AVG(ratings.rating) as averageRating, ratings.vacationID, startDate, endDate, users.userName
+	SELECT *
+	FROM (SELECT AVG(ratings.rating) as averageRating, ratings.vacationID, startDate, endDate, users.userName, users.userID
     FROM ratings
-    JOIN (SELECT vacations.vacationID, vacations.startDate, vacations.endDate
-    FROM vacations
-    WHERE vacations.userID = uID) as userVacationsTable ON userVacationsTable.vacationID = ratings.vacationID
-    JOIN users on vacations.userID = userID.userID
-    GROUP BY userVacationsTable.vacationID;
+    JOIN vacations on ratings.vacationID = vacations.vacationID
+    JOIN users on vacations.userID = users.userID
+    GROUP BY vacationID) as tableName
+    WHERE tableName.userID = uID;
     
-call get_user_vacation_average_rating(2);

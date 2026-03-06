@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple select</title>
+</head>
+<style>
+table, th, td {
+
+  padding-right: 2em;
+}
+tr:nth-child(even){
+    background-color: rgb(150, 118, 77);
+}
+</style>
+<body>
+<p> Start : {{start}} and End: {{end}} with user_id: {{id}}<p>
+</form>
+<table>
+    <tr>
+      <th>rate</th>
+      <th>id</th>
+      <th>name</th>
+
+    </tr>
+    {% for columns  in results %}
+    <tr>
+      {% for rows in columns %}
+      
+        <td> {{rows}}</td>
+      
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

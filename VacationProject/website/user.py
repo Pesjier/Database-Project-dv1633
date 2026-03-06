@@ -1,13 +1,8 @@
 from flask import Blueprint, request, render_template, redirect, url_for
-import mysql.connector
+from .database_connect import get_sql_database
 
 def function_query(id, query):
-    mydb = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="laura123",
-    database = "mysqlproject"
-    )
+    mydb = get_sql_database()
 
     mycursor = mydb.cursor()
 
@@ -20,12 +15,7 @@ def function_query(id, query):
     return to_return
 
 def procedure_qeury(id, query):
-    mydb = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="laura123",
-    database = "mysqlproject"
-    )
+    mydb = get_sql_database()
 
     mycursor = mydb.cursor()
 
@@ -38,16 +28,15 @@ def procedure_qeury(id, query):
     return to_return
 
 user = Blueprint("user", __name__)
-@user.route("/", methods = ["GET"])
-def homepage():
+
+@user.route("/", methods = ["GET", "POST"])
+def choose():
     return render_template("user_button.html")
 
-@user.route("/choose", methods = ["POST"])
-def choose():
+@user.route("/homepage", methods = ["GET", "POST"])
+def homepage():
     user_id = (request.form["user_id"])
     print("user_id", user_id)
-    #country_id = function_query(user_id)
-    countryname = "croatia"  # hardcoded ska hämta from country countryname
     name =function_query(user_id, "get_user_name")
     results2 = procedure_qeury(user_id, "get_user_vacation_average_rating")
-    return render_template("user_display.html", name = name[0][0], countryname = countryname, results2 = results2)
+    return render_template("user_display.html", name = name[0][0], results2 = results2)

@@ -15,7 +15,7 @@ tr:nth-child(even){
 }
 </style>
 <body >
-<p style="background-color:rgb(172, 157, 137);">{{name}} from {{countryname}} has rated<p>
+<p style="background-color:rgb(172, 157, 137);">{{name}} has rated<p>
 <table>
     <tr>
       <th>avg_rate</th>
@@ -25,11 +25,18 @@ tr:nth-child(even){
     </tr>
     {% for columns  in results2 %}
     <tr>
-      {% for rows in columns %}
+        <td>{{ columns[0] }}</td>
+        <td>{{ columns[1] }}</td>
+        <td>{{ columns[2] }}</td>
+        <td>{{ columns[3] }}</td>
+
+            <td>
+                <form action="/vacation/" method="POST">
+                    <input type="hidden" name="vac_id" value="{{ columns[1] }}">
+                    <button type="submit">Select</button>
+                </form>
+        </td>
       
-        <td> {{rows}}</td>
-      
-        {% endfor %}
     </tr>
     {% endfor %}
 </table>
