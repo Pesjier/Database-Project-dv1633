@@ -1,4 +1,3 @@
-DROP PROCEDURE get_city_avg_ratae_count_users;
 delimiter $$
 create procedure get_city_avg_ratae_count_users(IN aID INT)
 begin
